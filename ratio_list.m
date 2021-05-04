@@ -19,5 +19,5 @@ for i=1:21
 end
 
 writematrix(ratioList)
-type 'ratio.txt'
+type 'ratioList.txt'
 disp(ratioList);
