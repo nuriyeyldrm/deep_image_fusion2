@@ -1,3 +1,3 @@
-function[fusedImage] = fusion_DWT_db2(fitsImage1,fitsImage2,k)
+function[fusedImage] = fusion_DWT_db2(image1, image2, k)
 % Image fusion
-fusedImage = wfusimg(fitsImage1,fitsImage2,'db2',k,'mean','mean');
+fusedImage = wfusimg(image1, image2,'db2', k, 'mean', 'mean');
