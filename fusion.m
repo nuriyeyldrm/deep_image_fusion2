@@ -9,7 +9,7 @@ index = i
 
 path1 = ['./IV_images/IR',num2str(index),'.png'];
 path2 = ['./IV_images/VIS',num2str(index),'.png'];
-fuse_path = ['./fused_infraredd/fused',num2str(index),'_VGG_multiLayers.png'];
+fuse_path = ['./fused',num2str(index),'_VGG_multiLayers.png'];
 
 image1 = imread(path1);
 image2 = imread(path2);
@@ -22,7 +22,13 @@ tic;
 % Highpass filter test image
 npd = 16;
 fltlmbd = 5;
-ratio = 1.9;
+
+fileID = fopen('ratioList.txt');
+C = textscan(fileID,'%f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f','Delimiter',',',...
+'MultipleDelimsAsOne',1);
+fclose(fileID);
+
+ratio = C{i}
 
 [I_lrr1, I_saliency1] = lowpass(image1, fltlmbd, npd, ratio);
 [I_lrr2, I_saliency2] = lowpass(image2, fltlmbd, npd, ratio);
