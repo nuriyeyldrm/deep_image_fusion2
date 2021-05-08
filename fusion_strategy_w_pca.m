@@ -1,4 +1,4 @@
-function [gen, ave1, ave2] = fusion_strategy(features_a, features_b, source_a, source_b, img1, img2, img_1, img_2, unit)
+function [gen, ave1, ave2] = fusion_strategy_w_pca(features_a, features_b, source_a, source_b, img1, img2, img_1, img_2, unit)
 
 [m,n] = size(features_a);
 [m1,n1] = size(source_a);

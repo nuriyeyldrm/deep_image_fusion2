@@ -1,4 +1,4 @@
-function ratio = find_best_ratio(image1, image2)
+function [ratio, nabf] = find_best_ratio_pca(image1, image2)
 
 %load vgg19
 net = load('imagenet-vgg-verydeep-19.mat');
@@ -42,7 +42,9 @@ for i=1:+0.1:2
     l1_featrues_img2 = resize(img2);
 
     [F_saliency_relu1, l1_featrues_relu1_ave_a, l1_featrues_relu1_ave_b] = ...
-                fusion_strategy(l1_featrues_relu1_a, l1_featrues_relu1_b, I_saliency1, I_saliency2, l1_featrues_img1, l1_featrues_img2, img1, img2, unit_relu1_1);
+                fusion_strategy(l1_featrues_relu1_a, l1_featrues_relu1_b,...
+                I_saliency1, I_saliency2, l1_featrues_img1, l1_featrues_img2,...
+                img1, img2, unit_relu1_1);
 
     %% relu2_1
     out_relu2_1_a = res_a(7).x;
@@ -53,7 +55,9 @@ for i=1:+0.1:2
     l1_featrues_relu2_b = extract_l1_feature(out_relu2_1_b);
 
     [F_saliency_relu2, l1_featrues_relu2_ave_a, l1_featrues_relu2_ave_b] = ...
-                fusion_strategy(l1_featrues_relu2_a, l1_featrues_relu2_b, I_saliency1, I_saliency2, l1_featrues_img1, l1_featrues_img2, img1, img2, unit_relu2_1);
+                fusion_strategy(l1_featrues_relu2_a, l1_featrues_relu2_b,...
+                I_saliency1, I_saliency2, l1_featrues_img1, l1_featrues_img2,...
+                img1, img2, unit_relu2_1);
 
     %% relu3_1
     out_relu3_1_a = res_a(12).x;
@@ -64,7 +68,9 @@ for i=1:+0.1:2
     l1_featrues_relu3_b = extract_l1_feature(out_relu3_1_b);
 
     [F_saliency_relu3, l1_featrues_relu3_ave_a, l1_featrues_relu3_ave_b] = ...
-                fusion_strategy(l1_featrues_relu3_a, l1_featrues_relu3_b, I_saliency1, I_saliency2, l1_featrues_img1, l1_featrues_img2, img1, img2, unit_relu3_1);
+                fusion_strategy(l1_featrues_relu3_a, l1_featrues_relu3_b,...
+                I_saliency1, I_saliency2, l1_featrues_img1, l1_featrues_img2,...
+                img1, img2, unit_relu3_1);
 
     %% relu4_1
     out_relu4_1_a = res_a(21).x;
@@ -75,7 +81,9 @@ for i=1:+0.1:2
     l1_featrues_relu4_b = extract_l1_feature(out_relu4_1_b);
 
     [F_saliency_relu4, l1_featrues_relu4_ave_a, l1_featrues_relu4_ave_b] = ...
-                fusion_strategy(l1_featrues_relu4_a, l1_featrues_relu4_b, I_saliency1, I_saliency2, l1_featrues_img1, l1_featrues_img2, img1, img2, unit_relu4_1);
+                fusion_strategy(l1_featrues_relu4_a, l1_featrues_relu4_b,...
+                I_saliency1, I_saliency2, l1_featrues_img1, l1_featrues_img2,...
+                img1, img2, unit_relu4_1);
 
     %% fusion strategy
 
@@ -84,14 +92,20 @@ for i=1:+0.1:2
     F_saliency = max(F_saliency, F_saliency_relu4);
 
     fusion_im = F_lrr + F_saliency;
-    
-    NABF = analysis_nabf(fusion_im,image1,image2);
-    
+    imwrite(fusion_im,'fuse.png','png');
+    fused = imread('fuse.png');
+    fused = im2double(fused);
+    NABF = analysis_nabf(fused,image1,image2)
+   
     if NABF < tmp
         ratio = i;
         tmp = NABF; 
+        nabf = NABF;
     end
+    
+    delete('fuse.png')
 end
+
 
 
 
