@@ -1,4 +1,4 @@
-function [NABF]=analysis_nabf(image_f,I1,I2)
+function [NABF]=analysis_nabf(f,I1,I2)
 % function [QABF,LABF,NABF,NABF1]=objective_fusion_perform_fn(f,I1,I2)
 % 
 %%% objective_fusion_perform_fn: Computes the Objective Fusion Performance Parameters proposed by Petrovic
@@ -22,9 +22,6 @@ function [NABF]=analysis_nabf(image_f,I1,I2)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Petrovic Metrics %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-f = im2double(image_f);
-
 %%% Parameters for Petrovic Metrics Computation.
 Td=2;       
 wt_min=0.001;
