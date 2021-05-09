@@ -6,7 +6,7 @@ net = vl_simplenn_tidy(net);
 
 tmp = 1000;
 for i=1:+0.1:2
-    % Highpass filter test image
+
     npd = 16;
     fltlmbd = 5;
 
