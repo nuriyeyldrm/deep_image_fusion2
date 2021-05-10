@@ -1,4 +1,5 @@
 function[fusedImage] = fusion_PCA(image1,image2)
+% by VPS Naidu, MSDF Lab, NAL, Bangalore
 % Image Fusion using PCA algorithm
 % creating the covariance matrix
 C = cov([image1(:) image2(:)]);
