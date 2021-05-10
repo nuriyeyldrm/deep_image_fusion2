@@ -15,4 +15,4 @@ If you want to find the ratios, you have to run the code the long way. The ratio
 ![alt text](https://github.com/nuriyeyldrm/deep_image_fusion2/blob/master/framework/Nabf_graph.png?raw=true)
 
 ### with a few changes Python version 
-[a link](https://github.com/nuriyeyldrm/deep_image_fusion.git)
+[https://github.com/nuriyeyldrm/deep_image_fusion.git]
