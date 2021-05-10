@@ -2,7 +2,7 @@ fileID = fopen('ratio.txt','w+t');
 
 n = 21;
 time = zeros(n,1);
-for i=1:1
+for i=15:15
     index = i
 
     path1 = ['./IV_images/IR',num2str(index),'.png'];
