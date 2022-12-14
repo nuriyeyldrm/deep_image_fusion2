@@ -1,7 +1,5 @@
 # Multi-Sensor Image (infrared and visible) Fusion using deep learning framework, PCA, DWT
 
-A banking API allows you to transfer money between two accounts. 
-
 ### Requirements
 - [MatConvNet](https://www.vlfeat.org/matconvnet/)
 - [imagenet-vgg-verydeep-19](https://www.vlfeat.org/matconvnet/pretrained/)
